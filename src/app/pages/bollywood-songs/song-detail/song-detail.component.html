@@ -1,0 +1,60 @@
+<div *ngIf="song as s; else notFound" class="max-w-4xl mx-auto px-4 pt-28 pb-20 text-white">
+
+  <!-- Title -->
+  <h2 class="text-5xl md:text-6xl font-bold text-blue-400 text-center mb-10 tracking-tight leading-tight drop-shadow-lg">
+    {{ s.title }}
+  </h2>
+
+  <!-- Details Card -->
+  <div class="bg-white/5 backdrop-blur-md rounded-xl shadow-xl p-8 mb-10 border border-white/10 text-lg transition-transform duration-300 hover:scale-[1.01]">
+    <div class="grid md:grid-cols-2 gap-6">
+      <p class="text-gray-300"><span class="text-white font-semibold">Movie:</span> {{ s.movie }}</p>
+      <p class="text-gray-300"><span class="text-white font-semibold">Chords:</span> {{ s.chords }}</p>
+      <p class="text-gray-300"><span class="text-white font-semibold">Capo:</span> {{ s.capo }}</p>
+      <p class="text-gray-300"><span class="text-white font-semibold">Strumming:</span> {{ s.strumming }}</p>
+    </div>
+
+    <p class="mt-8 text-base italic text-blue-300 border-l-4 border-blue-400 pl-4">
+      {{ s.tips }}
+    </p>
+  </div>
+
+  <!-- Song Image -->
+  <div class="overflow-hidden rounded-xl shadow-lg mb-12 border-4 border-blue-500">
+    <img [src]="s.imageUrl" [alt]="s.title" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+  </div>
+
+  <!-- Auto-scroll toggle button -->
+ <div class="flex justify-center mb-6">
+  <button (click)="toggleAutoScroll()"
+          [disabled]="isCountingDown"
+          class="bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600 text-white font-medium text-base px-6 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-50 disabled:cursor-not-allowed">
+    <ng-container *ngIf="isCountingDown">
+      ⏳ Starting in {{ countdown }}s...
+    </ng-container>
+    <ng-container *ngIf="!isCountingDown && !isScrolling">
+      ▶️ Start Auto-Scroll
+    </ng-container>
+    <ng-container *ngIf="!isCountingDown && isScrolling">
+      🛑 Stop Auto-Scroll
+    </ng-container>
+  </button>
+</div>
+
+
+  <!-- Lyrics Section with scroll -->
+  <div #lyricsContainer
+       class="rounded-xl overflow-hidden border border-blue-500 shadow-2xl max-h-[650px] overflow-y-auto custom-scrollbar bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 p-8">
+    <pre class="whitespace-pre-wrap font-mono text-blue-100 text-lg md:text-xl leading-relaxed tracking-wide">
+{{ s.lyrics }}
+    </pre>
+  </div>
+
+</div>
+
+<!-- Not Found -->
+<ng-template #notFound>
+  <div class="text-red-500 font-semibold mt-32 text-center text-2xl">
+    Song not found.
+  </div>
+</ng-template>

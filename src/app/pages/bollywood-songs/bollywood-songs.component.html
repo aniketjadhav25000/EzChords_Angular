@@ -1,0 +1,65 @@
+<section class="pt-28 pb-20 px-4 bg-gradient-to-b from-black/10 to-gray-900 min-h-screen">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-white mb-8 tracking-tight">
+      Bollywood Guitar Chords Library
+    </h2>
+
+    <!-- Search Bar with Button -->
+    <div class="mb-12 flex justify-center items-center gap-2">
+      <button
+        (click)="applySearch()"
+        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+      >
+        Search
+      </button>
+      <input
+        type="text"
+        [(ngModel)]="searchInput"
+        placeholder="Search by song title or movie..."
+        class="w-full max-w-md px-4 py-2 rounded-md bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+    </div>
+
+
+    <!-- Song Cards -->
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        *ngFor="let song of filteredSongsList"
+
+        class="group bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+        [routerLink]="['/bollywood-songs', song.id]"
+      >
+        <!-- Image -->
+        <div class="overflow-hidden">
+          <img
+            [src]="song.imageUrl"
+            [alt]="song.title"
+            loading="lazy"
+            class="w-full h-40 object-cover transform group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+
+        <!-- Content -->
+        <div class="p-5">
+          <h3 class="text-xl font-semibold text-white mb-1 truncate">{{ song.title }}</h3>
+          <p class="text-sm text-gray-300 mb-1"><span class="text-gray-400">Movie:</span> {{ song.movie }}</p>
+          <p class="text-sm text-gray-300 mb-1"><span class="text-gray-400">Chords:</span> {{ song.chords }}</p>
+          <p class="text-sm text-gray-300 mb-1"><span class="text-gray-400">Capo:</span> {{ song.capo }}</p>
+          <p class="text-sm text-gray-300"><span class="text-gray-400">Strumming:</span> {{ song.strumming }}</p>
+          <p class="text-xs text-blue-200 italic mt-3 line-clamp-2">{{ song.tips }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-20 text-center">
+      <p class="text-lg text-gray-300 mb-2">Looking to build your fundamentals first?</p>
+      <a
+        routerLink="/beginner-lessons"
+        class="inline-block mt-2 px-6 py-2 border border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-black rounded transition duration-200"
+      >
+        Explore Beginner Lessons
+      </a>
+    </div>
+  </div>
+</section>

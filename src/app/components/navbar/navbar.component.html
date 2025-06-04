@@ -1,0 +1,72 @@
+<nav class="fixed top-0 left-0 w-full z-50 border-b border-white/20 bg-transparent backdrop-blur-sm text-white transition-colors duration-500">
+  <div class="flex flex-wrap items-center justify-between h-20 px-4 sm:px-6 lg:px-8 w-full">
+    
+    <!-- Logo Left -->
+    <div class="flex items-center flex-shrink-0">
+      <a routerLink="/" class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 tracking-wider select-none">
+        EzChords
+      </a>
+    </div>
+
+    <!-- Desktop Nav Center -->
+    <div class="hidden md:flex flex-grow justify-center space-x-6 xl:space-x-10">
+      <ng-container *ngFor="let link of navLinks">
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="text-indigo-300"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="text-lg font-medium tracking-wide relative group transition duration-300"
+        >
+          <span class="inline-block group-hover:underline group-hover:decoration-indigo-400 group-hover:underline-offset-8 group-hover:scale-105 transition-all duration-300">
+            {{ link.label }}
+          </span>
+        </a>
+      </ng-container>
+    </div>
+
+    <!-- Search Bar Right (only for md and above) -->
+    <div class="hidden md:flex items-center space-x-2 ml-4">
+      <input
+        type="text"
+        [(ngModel)]="searchInput"
+        placeholder="Search chords..."
+        class="px-3 py-2 rounded-md bg-white bg-opacity-20 backdrop-blur-sm border border-white/30 placeholder-white/70 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-opacity-40 transition"
+        (keyup.enter)="onSearch()"
+      />
+      <button (click)="onSearch()" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 rounded-md font-semibold transition">
+        Search
+      </button>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <div class="md:hidden flex items-center ml-auto">
+      <button (click)="toggleMenu()" class="text-white focus:outline-none">
+        <svg *ngIf="!isOpen" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg *ngIf="isOpen" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div
+    [ngClass]="{
+      'max-h-screen opacity-100 py-4 px-6 bg-[#1e1b4b]/90': isOpen,
+      'max-h-0 opacity-0 overflow-hidden': !isOpen
+    }"
+    class="md:hidden flex flex-col space-y-4 transition-all duration-500 ease-in-out"
+  >
+    <ng-container *ngFor="let link of navLinks">
+      <a
+        [routerLink]="link.path"
+        (click)="closeMenu()"
+        class="text-lg font-medium tracking-wide hover:underline decoration-indigo-400 underline-offset-8 transition"
+      >
+        {{ link.label }}
+      </a>
+    </ng-container>
+  </div>
+</nav>
