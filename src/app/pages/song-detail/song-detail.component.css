@@ -1,0 +1,41 @@
+/* Ensure proper scroll behavior */
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* Tab transition effects */
+.transition {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Backdrop blur effects */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Tab styling */
+button:focus {
+  outline: none;
+}
+
+/* Chord diagram styling */
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .text-4xl {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+

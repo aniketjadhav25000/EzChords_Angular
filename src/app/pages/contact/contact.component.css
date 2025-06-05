@@ -1,0 +1,90 @@
+/* Ensure proper scroll behavior */
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* Custom select styling */
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Backdrop blur effects */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Form validation styles */
+input:invalid:not(:focus):not(:placeholder-shown),
+select:invalid:not(:focus),
+textarea:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #ef4444;
+}
+
+input:valid:not(:focus):not(:placeholder-shown),
+select:valid:not(:focus),
+textarea:valid:not(:focus):not(:placeholder-shown) {
+  border-color: #10b981;
+}
+
+/* Focus states */
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.5);
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Disabled state */
+.disabled\:bg-gray-600:disabled {
+  background-color: #4b5563;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .text-4xl {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .text-6xl {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+}
+
+/* Textarea resize prevention */
+.resize-none {
+  resize: none;
+}
+
+/* Success message animation */
+.border-green-500\/30 {
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.bg-green-600\/20 {
+  background-color: rgba(22, 163, 74, 0.2);
+}

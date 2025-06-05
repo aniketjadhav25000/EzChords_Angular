@@ -1,76 +1,75 @@
-<section class="text-white py-20 px-6 bg-gradient-to-b from-black/20 to-gray-800 min-h-screen">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-4xl font-extrabold mb-4 drop-shadow-md">🎓 Beginner Guitar Lessons</h2>
-    <p class="text-lg mb-12 text-gray-300 max-w-2xl mx-auto">
-      Start your musical journey with our structured and easy-to-follow lessons. Whether you're holding a guitar for the first time or want to brush up on basics, we've got you covered.
-    </p>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-      <!-- Lesson 1 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">🎸 Guitar Setup & Posture</h3>
-        <p class="text-gray-200">
-          Learn how to hold the guitar correctly, tune it, and adopt proper posture to avoid injury and improve performance.
-        </p>
-      </div>
-
-      <!-- Lesson 2 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">🧠 Know Your Guitar</h3>
-        <p class="text-gray-200">
-          Understand guitar anatomy, string names, fretboard layout, and how it all connects to playing music.
-        </p>
-      </div>
-
-      <!-- Lesson 3 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">✋ Finger Exercises</h3>
-        <p class="text-gray-200">
-          Practice essential warm-ups, improve finger strength, and gain dexterity for faster chord transitions.
-        </p>
-      </div>
-
-      <!-- Lesson 4 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">📚 Strumming Basics</h3>
-        <p class="text-gray-200">
-          Master simple down and up strokes with rhythm exercises that help you develop timing and groove.
-        </p>
-      </div>
-
-      <!-- Lesson 5 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">🔤 First Chords</h3>
-        <p class="text-gray-200">
-          Learn beginner chords like C, G, D, A, and E — the foundation of countless songs across genres.
-        </p>
-      </div>
-
-      <!-- Lesson 6 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">🎶 Smooth Transitions</h3>
-        <p class="text-gray-200">
-          Practice exercises for smooth chord switching and start playing progressions used in popular songs.
-        </p>
-      </div>
-    </div>
-
-    <!-- Bonus Content -->
-    <div class="mt-16">
-      <h4 class="text-2xl font-semibold mb-2">📺 Video Demonstrations</h4>
-      <p class="text-gray-300 mb-6 max-w-xl mx-auto">
-        Visual learners rejoice! Watch short demo videos showing correct techniques for every lesson.
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+        Beginner Guitar
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">
+          Lessons
+        </span>
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Start your guitar journey with our structured lessons designed specifically for beginners. 
+        Learn at your own pace and build confidence with every chord.
       </p>
-      <a
-        routerLink="/contact"
-        class="inline-block bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded shadow-lg transition"
-      >
-        Request Access to Demo Videos
-      </a>
     </div>
 
-    <div class="mt-16 italic text-lg text-gray-400">
-      <p>Practice a little every day. Small steps lead to big progress. 🎵</p>
+    <!-- Lessons Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let lesson of lessons" 
+           class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 hover:bg-white/20 transition duration-300 transform hover:scale-105">
+        
+        <!-- Lesson Header -->
+        <div class="flex justify-between items-start mb-4">
+          <span class="text-sm px-3 py-1 rounded-full text-white font-medium"
+                [ngClass]="getDifficultyColor(lesson.difficulty)">
+            {{ lesson.difficulty }}
+          </span>
+          <span class="text-gray-300 text-sm">{{ lesson.duration }}</span>
+        </div>
+
+        <!-- Lesson Content -->
+        <h3 class="text-xl font-semibold text-white mb-3">{{ lesson.title }}</h3>
+        <p class="text-gray-300 mb-4">{{ lesson.description }}</p>
+
+        <!-- Chords -->
+        <div *ngIf="lesson.chords.length > 0" class="mb-4">
+          <p class="text-sm text-gray-400 mb-2">Chords covered:</p>
+          <div class="flex flex-wrap gap-2">
+            <span *ngFor="let chord of lesson.chords"
+                  class="px-2 py-1 bg-indigo-600 text-white text-sm rounded">
+              {{ chord }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <button class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition duration-300">
+          Start Lesson
+        </button>
+      </div>
+    </div>
+
+    <!-- Tips Section -->
+    <div class="mt-16 bg-black/20 rounded-lg p-8">
+      <h2 class="text-3xl font-bold text-white mb-6 text-center">Learning Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="text-center">
+          <div class="text-3xl mb-3">🎯</div>
+          <h3 class="text-lg font-semibold text-white mb-2">Practice Daily</h3>
+          <p class="text-gray-300">Even 10-15 minutes daily is better than longer sessions once a week.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl mb-3">🐌</div>
+          <h3 class="text-lg font-semibold text-white mb-2">Start Slow</h3>
+          <p class="text-gray-300">Focus on clean chord changes rather than speed. Speed comes naturally.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl mb-3">💪</div>
+          <h3 class="text-lg font-semibold text-white mb-2">Build Strength</h3>
+          <p class="text-gray-300">Your fingers will get stronger with practice. Don't give up!</p>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>

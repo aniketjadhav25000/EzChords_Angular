@@ -1,0 +1,40 @@
+/* Ensure proper scroll behavior */
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* Card hover effects */
+.transform {
+  transform: translateZ(0);
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Backdrop blur effects */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .text-4xl {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .text-6xl {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+}
+
+/* Smooth transitions */
+.transition {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}

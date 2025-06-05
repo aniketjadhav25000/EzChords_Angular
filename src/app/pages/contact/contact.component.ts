@@ -1,53 +1,102 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; // ✅ Add this
+
+interface ContactForm {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule], // ✅ Include CommonModule
+  imports: [CommonModule, FormsModule],
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css'],
+  styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
-  name = '';
-  email = '';
-  message = '';
+  contactForm: ContactForm = {
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  };
 
-  sending = false;
-  successMsg = '';
-  errorMsg = '';
+  isSubmitting = false;
+  isSubmitted = false;
 
-  constructor(private http: HttpClient) {}
-
-  sendEmail() {
-    if (!this.name || !this.email || !this.message) {
-      this.errorMsg = 'Please fill all the fields.';
-      this.successMsg = '';
-      return;
+  contactInfo = [
+    {
+      icon: '📧',
+      title: 'Email',
+      value: 'hello@ezchords.com',
+      description: 'Send us an email anytime'
+    },
+    {
+      icon: '💬',
+      title: 'Discord',
+      value: 'EzChords Community',
+      description: 'Join our learning community'
+    },
+    {
+      icon: '📱',
+      title: 'Social Media',
+      value: '@EzChordsApp',
+      description: 'Follow us for updates'
     }
+  ];
 
-    this.sending = true;
-    this.successMsg = '';
-    this.errorMsg = '';
+  faqs = [
+    {
+      question: 'How do I get started as a complete beginner?',
+      answer: 'Start with our Beginner Lessons section. We recommend learning your first chord (Em) and then gradually adding more chords to your repertoire.'
+    },
+    {
+      question: 'Do I need a special guitar to use EzChords?',
+      answer: 'No! Any acoustic or electric guitar will work. We recommend starting with an acoustic guitar as it\'s more portable and doesn\'t require additional equipment.'
+    },
+    {
+      question: 'How long does it take to learn a song?',
+      answer: 'It varies by difficulty and your experience level. Most beginners can play simple songs within 2-4 weeks of consistent practice.'
+    },
+    {
+      question: 'Are the chord diagrams accurate?',
+      answer: 'Yes! All our chord diagrams are verified by professional guitarists and regularly updated for accuracy.'
+    }
+  ];
 
-    this.http.post('http://localhost:3000/send-email', {
-      name: this.name,
-      email: this.email,
-      message: this.message,
-    }).subscribe({
-      next: (res: any) => {
-        this.sending = false;
-        this.successMsg = res.message || 'Message sent successfully!';
-        this.name = '';
-        this.email = '';
-        this.message = '';
-      },
-      error: (err) => {
-        this.sending = false;
-        this.errorMsg = err.error?.error || 'Failed to send message.';
-      }
-    });
+  onSubmit() {
+    if (this.isValidForm()) {
+      this.isSubmitting = true;
+      
+      // Simulate form submission
+      setTimeout(() => {
+        this.isSubmitting = false;
+        this.isSubmitted = true;
+        this.resetForm();
+      }, 2000);
+    }
+  }
+
+  private isValidForm(): boolean {
+    return !!(this.contactForm.name && 
+              this.contactForm.email && 
+              this.contactForm.subject && 
+              this.contactForm.message);
+  }
+
+  private resetForm() {
+    this.contactForm = {
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    };
+  }
+
+  resetSubmissionState() {
+    this.isSubmitted = false;
   }
 }

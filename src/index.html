@@ -2,34 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Ezchords</title>
+  <title>EzChords - Learn Guitar Chords Easily</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
-
-
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8'
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen">
   <app-root></app-root>
-  <style>
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 14px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: #1e293b; /* Tailwind's slate-800 */
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: #3b82f6; /* Tailwind's blue-500 */
-    border-radius: 10px;
-    border: 2px solid #1e293b;
-  }
-</style>
-
+  <script type="module" src="main.ts"></script>
 </body>
 </html>
