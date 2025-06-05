@@ -1,10 +1,15 @@
-<!-- Main app container - no conflicting scroll containers -->
-<div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-  <!-- Navigation component -->
-  <app-navbar></app-navbar>
-  
-  <!-- Main content area with proper spacing for fixed navbar -->
-  <main class="pt-20">
-    <router-outlet></router-outlet>
-  </main>
-</div>  
+<app-navbar></app-navbar>
+
+<!-- Background wrapper -->
+<div class="w-full">
+  <div
+    class="min-h-screen w-full"
+    style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center;"
+  >
+    <!-- Overlay + Scrollable Content -->
+    <div class="bg-black bg-opacity-50 min-h-screen overflow-y-auto">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

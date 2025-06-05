@@ -1,91 +1,96 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, ActivatedRoute } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 
 interface Chord {
   name: string;
-  type: 'Major' | 'Minor' | 'Seventh' | 'Sus' | 'Dim';
-  difficulty: 'Easy' | 'Medium' | 'Hard';
-  fingers: string;
   description: string;
+  imagePath: string;
+  audioPath: string;
 }
 
 @Component({
   selector: 'app-chord-library',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './chord-library.component.html',
-  styleUrls: ['./chord-library.component.css']
+  styleUrls: ['./chord-library.component.css'],
 })
-export class ChordLibraryComponent implements OnInit {
-  searchTerm = '';
-  selectedType = '';
-  selectedDifficulty = '';
-
+export class ChordLibraryComponent {
   chords: Chord[] = [
-    { name: 'A', type: 'Major', difficulty: 'Easy', fingers: '2-1-0', description: 'One of the first chords every guitarist learns' },
-    { name: 'Am', type: 'Minor', difficulty: 'Easy', fingers: '2-3-1', description: 'The easiest minor chord to learn' },
-    { name: 'C', type: 'Major', difficulty: 'Medium', fingers: '3-2-0-1', description: 'A fundamental chord in many songs' },
-    { name: 'D', type: 'Major', difficulty: 'Easy', fingers: '2-3-2', description: 'Essential open chord' },
-    { name: 'Dm', type: 'Minor', difficulty: 'Easy', fingers: '2-3-1', description: 'Beautiful minor chord' },
-    { name: 'E', type: 'Major', difficulty: 'Medium', fingers: '2-2-1', description: 'Full-bodied major chord' },
-    { name: 'Em', type: 'Minor', difficulty: 'Easy', fingers: '2-3', description: 'The easiest chord to play' },
-    { name: 'F', type: 'Major', difficulty: 'Hard', fingers: 'Barre 1st', description: 'Your first barre chord challenge' },
-    { name: 'G', type: 'Major', difficulty: 'Medium', fingers: '3-2-4', description: 'Wide finger stretch chord' },
-    { name: 'A7', type: 'Seventh', difficulty: 'Easy', fingers: '2-0-0', description: 'Adds bluesy flavor' },
-    { name: 'B7', type: 'Seventh', difficulty: 'Medium', fingers: '2-1-2-0-2', description: 'Common in blues progressions' },
-    { name: 'Cadd9', type: 'Sus', difficulty: 'Medium', fingers: '3-2-0-3', description: 'Adds beautiful color to C major' }
+    {
+      name: 'A Major',
+      description: 'Bright and classic. Used in rock, pop, and country.',
+      imagePath: 'assets/chords/a-major.png',
+      audioPath: 'assets/audio-chords/a-major.mp3',
+    },
+    {
+      name: 'C Major',
+      description: 'Warm tone. Great for beginners and ballads.',
+      imagePath: 'assets/chords/c-major.png',
+      audioPath: 'assets/audio-chords/c-major.mp3',
+    },
+    {
+      name: 'D Major',
+      description: 'Crisp and joyful. Common in folk and acoustic music.',
+      imagePath: 'assets/chords/d-major.png',
+      audioPath: 'assets/audio-chords/d-major.mp3',
+    },
+    {
+      name: 'E Minor',
+      description: 'Moody and versatile. Great for intros and solos.',
+      imagePath: 'assets/chords/e-minor.png',
+      audioPath: 'assets/audio-chords/e-minor.mp3',
+    },
+    {
+      name: 'G Major',
+      description: 'Bright and open. Very popular in songwriting.',
+      imagePath: 'assets/chords/g-major.png',
+      audioPath: 'assets/audio-chords/g-major.mp3',
+    },
+    {
+      name: 'F Major',
+      description: 'Challenging barre chord. Essential for progress.',
+      imagePath: 'assets/chords/f-major.png',
+      audioPath: 'assets/audio-chords/f-major.mp3',
+    },
   ];
 
-  chordTypes = ['Major', 'Minor', 'Seventh', 'Sus', 'Dim'];
-  difficulties = ['Easy', 'Medium', 'Hard'];
+  progress: number[] = this.chords.map(() => 0);
+  isPlaying: boolean[] = this.chords.map(() => false);
 
-  constructor(private route: ActivatedRoute) {}
+  togglePlay(audio: HTMLAudioElement, index: number) {
+    if (audio.paused) {
+      this.stopAllExcept(index);
+      audio.play();
+      this.isPlaying[index] = true;
+    } else {
+      audio.pause();
+      this.isPlaying[index] = false;
+    }
+  }
 
-  ngOnInit() {
-    // Check for search parameter from navbar
-    this.route.queryParams.subscribe(params => {
-      if (params['search']) {
-        this.searchTerm = params['search'];
+  stopAllExcept(currentIndex: number) {
+    const audios = document.querySelectorAll('audio');
+    audios.forEach((el, i) => {
+      const audioEl = el as HTMLAudioElement;
+      if (i !== currentIndex) {
+        audioEl.pause();
+        audioEl.currentTime = 0; // Restart audio
+        this.isPlaying[i] = false;
+        this.progress[i] = 0;
       }
     });
   }
 
-  get filteredChords(): Chord[] {
-    return this.chords.filter(chord => {
-      const matchesSearch = chord.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-                           chord.description.toLowerCase().includes(this.searchTerm.toLowerCase());
-      const matchesType = !this.selectedType || chord.type === this.selectedType;
-      const matchesDifficulty = !this.selectedDifficulty || chord.difficulty === this.selectedDifficulty;
-      
-      return matchesSearch && matchesType && matchesDifficulty;
-    });
-  }
-
-  getDifficultyColor(difficulty: string): string {
-    switch (difficulty) {
-      case 'Easy': return 'bg-green-500';
-      case 'Medium': return 'bg-yellow-500';
-      case 'Hard': return 'bg-red-500';
-      default: return 'bg-gray-500';
+  onTimeUpdate(audio: HTMLAudioElement, index: number) {
+    if (audio.duration > 0) {
+      const percentage = (audio.currentTime / audio.duration) * 100;
+      this.progress[index] = Math.min(100, percentage);
     }
-  }
 
-  getTypeColor(type: string): string {
-    switch (type) {
-      case 'Major': return 'bg-blue-500';
-      case 'Minor': return 'bg-purple-500';
-      case 'Seventh': return 'bg-orange-500';
-      case 'Sus': return 'bg-pink-500';
-      case 'Dim': return 'bg-gray-500';
-      default: return 'bg-indigo-500';
+    if (audio.ended) {
+      this.isPlaying[index] = false;
+      this.progress[index] = 0;
     }
-  }
-
-  clearFilters() {
-    this.searchTerm = '';
-    this.selectedType = '';
-    this.selectedDifficulty = '';
   }
 }

@@ -1,25 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
-interface NavLink {
-  label: string;
-  path: string;
-}
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [RouterModule, CommonModule, FormsModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
   isOpen = false;
-  searchInput = '';
+  searchInput: string = '';
 
-  navLinks: NavLink[] = [
+  navLinks = [
     { label: 'Home', path: '/' },
     { label: 'Beginner Lessons', path: '/beginner-lessons' },
     { label: 'Chord Library', path: '/chord-library' },
@@ -27,7 +22,7 @@ export class NavbarComponent {
     { label: 'Contact', path: '/contact' }
   ];
 
-  constructor(private router: Router) {}
+  @Output() searchQuery = new EventEmitter<string>();
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
@@ -38,13 +33,9 @@ export class NavbarComponent {
   }
 
   onSearch() {
-    if (this.searchInput.trim()) {
-      // Navigate to chord library with search parameter
-      this.router.navigate(['/chord-library'], { 
-        queryParams: { search: this.searchInput.trim() } 
-      });
-      this.searchInput = '';
-      this.closeMenu();
+    const trimmedQuery = this.searchInput.trim();
+    if (trimmedQuery) {
+      this.searchQuery.emit(trimmedQuery);
     }
   }
 }

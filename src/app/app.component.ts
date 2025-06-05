@@ -1,28 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'EzChords';
-
   constructor(
     private router: Router,
-    private viewportScroller: ViewportScroller
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit() {
-    // Handle scroll to top on route changes
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      // Scroll to top of the page
-      this.viewportScroller.scrollToPosition([0, 0]);
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      // Only runs in browser (not during SSR)
+      this.router.events
+        .pipe(filter(event => event instanceof NavigationEnd))
+        .subscribe(() => {
+          setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'auto' });
+          }, 0);
+        });
+    }
   }
 }

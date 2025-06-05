@@ -1,60 +1,69 @@
-<div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+<!-- src/app/components/home/home.component.html -->
+
+<section class="text-center py-20 px-6 text-white min-h-screen">
   <!-- Hero Section -->
-  <section class="relative py-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto text-center">
-      <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
-        Learn Guitar
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">
-          Chords
-        </span>
-        <br>The Easy Way
-      </h1>
-      <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-        Master your favorite songs with our comprehensive chord library and step-by-step lessons designed for beginners.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a routerLink="/beginner-lessons" 
-           class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition duration-300 transform hover:scale-105">
-          Start Learning
-        </a>
-        <a routerLink="/chord-library" 
-           class="px-8 py-4 border-2 border-white/30 hover:border-white/60 text-white font-semibold rounded-lg transition duration-300 hover:bg-white/10">
-          Browse Chords
-        </a>
-      </div>
-    </div>
-  </section>
+  <h1 class="text-5xl font-extrabold mb-6 drop-shadow-lg">
+    Welcome to EzChords
+  </h1>
+  <p class="text-xl mb-8 drop-shadow-md max-w-xl mx-auto">
+    Learn to play the guitar easily with beginner-friendly lessons, a comprehensive chord library, and step-by-step Bollywood song tutorials.
+  </p>
+  <a
+    routerLink="/beginner-lessons"
+    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition"
+  >
+    Get Started Now
+  </a>
 
   <!-- Features Section -->
-  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-black/20">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold text-white text-center mb-16">
-        Why Choose EzChords?
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div *ngFor="let feature of features" 
-             class="text-center p-6 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition duration-300">
-          <div class="text-4xl mb-4">{{ feature.icon }}</div>
-          <h3 class="text-xl font-semibold text-white mb-3">{{ feature.title }}</h3>
-          <p class="text-gray-300">{{ feature.description }}</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold text-white mb-6">
-        Start Your Musical Journey Today
-      </h2>
-      <p class="text-xl text-gray-300 mb-8">
-        Join thousands of guitar enthusiasts who have learned to play their favorite songs with EzChords.
+  <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto text-left">
+    <div class="bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-blur-md">
+      <h2 class="text-2xl font-bold mb-3">Beginner Lessons</h2>
+      <p>
+        Step-by-step lessons crafted for complete beginners. Learn chords, strumming patterns, and guitar basics with video guidance.
       </p>
-      <a routerLink="/beginner-lessons" 
-         class="px-10 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
-        Get Started Now
-      </a>
     </div>
-  </section>
-</div>
+
+    <div class="bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-blur-md">
+      <h2 class="text-2xl font-bold mb-3">Chord Library</h2>
+      <p>
+        Explore hundreds of chords with diagrams and real audio demos. Filter by difficulty or musical genre.
+      </p>
+    </div>
+
+    <div class="bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-blur-md">
+      <h2 class="text-2xl font-bold mb-3">Bollywood Songs</h2>
+      <p>
+        Play your favorite Bollywood hits with simplified chords and lyrics. Perfect for campfires and performances.
+      </p>
+    </div>
+  </div>
+
+  <!-- Why Choose Us -->
+  <div class="mt-24 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4">Why Learn with EzChords?</h2>
+    <ul class="text-left list-disc list-inside text-lg space-y-2 px-4 md:px-10">
+      <li>🎸 Beginner to Pro – structured learning path for all levels</li>
+      <li>🎧 Listen & Learn – audio-enabled chord and song previews</li>
+      <li>📱 Learn Anywhere – fully responsive mobile-friendly design</li>
+      <li>🎵 Focus on Practice – curated warm-ups and daily routines</li>
+      <li>🌐 Completely Free – access without registration</li>
+    </ul>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="mt-16">
+    <h3 class="text-2xl font-semibold mb-2">Ready to rock your first song?</h3>
+    <a
+      routerLink="/bollywood-songs"
+      class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition"
+    >
+      Try a Bollywood Song Now →
+    </a>
+  </div>
+
+  <!-- Footer Message -->
+  <div class="mt-20 text-lg italic drop-shadow-lg">
+    <p>Start your guitar journey today. Discover the joy of making music. 🎶</p>
+  </div>
+</section>
