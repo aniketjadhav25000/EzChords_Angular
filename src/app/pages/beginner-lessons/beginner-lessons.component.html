@@ -1,76 +1,68 @@
-<section class="text-white py-20 px-6 bg-gradient-to-b from-black/20 to-gray-800 min-h-screen">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-4xl font-extrabold mb-4 drop-shadow-md">🎓 Beginner Guitar Lessons</h2>
-    <p class="text-lg mb-12 text-gray-300 max-w-2xl mx-auto">
-      Start your musical journey with our structured and easy-to-follow lessons. Whether you're holding a guitar for the first time or want to brush up on basics, we've got you covered.
+<!-- ✨ Animated Background -->
+<div id="stars" class="fixed top-0 left-0 w-full h-full z-0"></div>
+
+<!-- 🎸 Beginner Lessons Section -->
+<section class="relative z-10 min-h-screen text-white py-24 px-6 flex flex-col items-center">
+  <!-- 🌟 Title -->
+  <div class="mb-16 text-center animate-fade-in-up max-w-2xl">
+    <h2 class="text-5xl font-extrabold mb-4 drop-shadow-2xl">🎓 Beginner Guitar Lessons</h2>
+    <p class="text-lg text-slate-300">Start your musical journey with easy and effective lessons designed for beginners.</p>
+  </div>
+
+  <!-- 📚 Lesson Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
+    <div class="glass-card card-hover rounded-2xl p-6">
+      <h3 class="text-xl font-bold mb-2">🎸 Setup & Posture</h3>
+      <p>Hold your guitar properly and tune it for better performance and comfort.</p>
+    </div>
+    <div class="glass-card card-hover rounded-2xl p-6">
+      <h3 class="text-xl font-bold mb-2">🧠 Know Your Guitar</h3>
+      <p>Understand frets, strings, and parts to navigate your instrument with ease.</p>
+    </div>
+    <div class="glass-card card-hover rounded-2xl p-6">
+      <h3 class="text-xl font-bold mb-2">✋ Finger Exercises</h3>
+      <p>Simple warmups to build flexibility, strength, and coordination.</p>
+    </div>
+    <div class="glass-card card-hover rounded-2xl p-6">
+      <h3 class="text-xl font-bold mb-2">📚 Strumming Basics</h3>
+      <p>Master the rhythm with downstrokes, upstrokes, and muting techniques.</p>
+    </div>
+    <div class="glass-card card-hover rounded-2xl p-6">
+      <h3 class="text-xl font-bold mb-2">🔤 First Chords</h3>
+      <p>Learn the must-know open chords like C, G, D, E, and A.</p>
+    </div>
+    <div class="glass-card card-hover rounded-2xl p-6">
+      <h3 class="text-xl font-bold mb-2">🎶 Chord Switching</h3>
+      <p>Develop speed and clarity when transitioning between chords.</p>
+    </div>
+  </div>
+
+  <!-- 🧊 Bonus Section -->
+  <div class="mt-24 w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up">
+    <div class="glass-card card-hover rounded-2xl p-6">
+      <h3 class="text-2xl font-semibold mb-2 text-amber-300">📺 Video Demonstrations</h3>
+      <p>Watch real-time play-alongs and visual lessons to speed up learning.</p>
+    </div>
+    <div class="glass-card card-hover rounded-2xl p-6">
+      <h3 class="text-2xl font-semibold mb-2 text-emerald-300">🧠 Practice Quizzes</h3>
+      <p>Test your memory with fun quizzes on chords, theory, and technique.</p>
+    </div>
+    <div class="glass-card card-hover rounded-2xl p-6">
+      <h3 class="text-2xl font-semibold mb-2 text-cyan-300">📅 7-Day Challenge</h3>
+      <p>Follow a simple 1-week plan to build your foundation from scratch.</p>
+    </div>
+  </div>
+
+  <!-- 🎯 Call to Action -->
+  <div class="mt-16 text-center animate-fade-in-up delay-700">
+    <a
+      routerLink="/contact"
+      class="glow-button bg-gradient-to-r from-pink-600 to-purple-700 hover:from-pink-700 hover:to-purple-800 text-white font-bold py-3 px-6 rounded-full shadow-xl transition hover:scale-105"
+    >
+      Get Personalized Guidance
+    </a>
+    <p class="mt-4 text-slate-400 italic animate-pulse-gentle">
+      Progress every day. Play your first song in just one week! 🎵
     </p>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-      <!-- Lesson 1 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">🎸 Guitar Setup & Posture</h3>
-        <p class="text-gray-200">
-          Learn how to hold the guitar correctly, tune it, and adopt proper posture to avoid injury and improve performance.
-        </p>
-      </div>
-
-      <!-- Lesson 2 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">🧠 Know Your Guitar</h3>
-        <p class="text-gray-200">
-          Understand guitar anatomy, string names, fretboard layout, and how it all connects to playing music.
-        </p>
-      </div>
-
-      <!-- Lesson 3 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">✋ Finger Exercises</h3>
-        <p class="text-gray-200">
-          Practice essential warm-ups, improve finger strength, and gain dexterity for faster chord transitions.
-        </p>
-      </div>
-
-      <!-- Lesson 4 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">📚 Strumming Basics</h3>
-        <p class="text-gray-200">
-          Master simple down and up strokes with rhythm exercises that help you develop timing and groove.
-        </p>
-      </div>
-
-      <!-- Lesson 5 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">🔤 First Chords</h3>
-        <p class="text-gray-200">
-          Learn beginner chords like C, G, D, A, and E — the foundation of countless songs across genres.
-        </p>
-      </div>
-
-      <!-- Lesson 6 -->
-      <div class="bg-white/10 rounded-lg p-6 shadow-lg backdrop-blur">
-        <h3 class="text-xl font-bold mb-2">🎶 Smooth Transitions</h3>
-        <p class="text-gray-200">
-          Practice exercises for smooth chord switching and start playing progressions used in popular songs.
-        </p>
-      </div>
-    </div>
-
-    <!-- Bonus Content -->
-    <div class="mt-16">
-      <h4 class="text-2xl font-semibold mb-2">📺 Video Demonstrations</h4>
-      <p class="text-gray-300 mb-6 max-w-xl mx-auto">
-        Visual learners rejoice! Watch short demo videos showing correct techniques for every lesson.
-      </p>
-      <a
-        routerLink="/contact"
-        class="inline-block bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded shadow-lg transition"
-      >
-        Request Access to Demo Videos
-      </a>
-    </div>
-
-    <div class="mt-16 italic text-lg text-gray-400">
-      <p>Practice a little every day. Small steps lead to big progress. 🎵</p>
-    </div>
   </div>
 </section>

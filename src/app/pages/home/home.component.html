@@ -1,69 +1,110 @@
-<!-- src/app/components/home/home.component.html -->
+<!-- Animated Stars Background -->
+<div id="stars" class="stars"></div>
 
-<section class="text-center py-20 px-6 text-white min-h-screen">
-  <!-- Hero Section -->
-  <h1 class="text-5xl font-extrabold mb-6 drop-shadow-lg">
-    Welcome to EzChords
-  </h1>
-  <p class="text-xl mb-8 drop-shadow-md max-w-xl mx-auto">
-    Learn to play the guitar easily with beginner-friendly lessons, a comprehensive chord library, and step-by-step Bollywood song tutorials.
-  </p>
-  <a
-    routerLink="/beginner-lessons"
-    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition"
-  >
-    Get Started Now
-  </a>
+<!-- Main Section -->
+<section class="relative z-10 min-h-screen text-white text-center py-24 px-6 section-content">
 
-  <!-- Features Section -->
-  <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto text-left">
-    <div class="bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-blur-md">
-      <h2 class="text-2xl font-bold mb-3">Beginner Lessons</h2>
-      <p>
-        Step-by-step lessons crafted for complete beginners. Learn chords, strumming patterns, and guitar basics with video guidance.
+  <!-- ⭐ Hero Section -->
+  <div class="mb-24 animate-fade-in-up">
+    <div class="animate-float">
+      <h1 class="text-6xl font-extrabold mb-4 leading-tight drop-shadow-2xl">
+        Welcome to <span class="text-amber-400 animate-pulse-gentle">EzChords</span>
+        <span class="interactive-icon inline-block text-pink-400">🎸</span>
+      </h1>
+    </div>
+    <p class="text-xl mb-8 text-slate-200 drop-shadow-lg max-w-2xl mx-auto animate-fade-in-up delay-200">
+      Your journey to playing guitar starts here! Beginner-friendly lessons, a rich chord library, and your favorite Bollywood songs — all in one place.
+    </p>
+    <button
+      class="glow-button bg-gradient-to-r from-violet-600 via-purple-600 to-blue-600 hover:from-violet-700 hover:via-purple-700 hover:to-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fade-in-up delay-400"
+      (click)="handleGetStarted()">
+      <span class="interactive-icon">🎯</span> Get Started Now
+    </button>
+  </div>
+
+  <!-- 🌟 Features Section -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto text-left mt-10">
+    <div
+      class="glass-card rounded-2xl p-8 transition-all duration-500 hover:scale-105 animate-fade-in-up delay-100 cursor-pointer"
+      (click)="handleFeatureClick('lessons')">
+      <div class="interactive-icon text-4xl mb-4">🎓</div>
+      <h2 class="text-2xl font-bold text-slate-100 mb-4">Beginner Lessons</h2>
+      <p class="text-slate-300 leading-relaxed">
+        Step-by-step guidance with video tutorials to master chords, strumming, and rhythm.
       </p>
+      <div class="mt-4 text-violet-400 hover:text-violet-300 transition-colors">Learn More →</div>
     </div>
 
-    <div class="bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-blur-md">
-      <h2 class="text-2xl font-bold mb-3">Chord Library</h2>
-      <p>
-        Explore hundreds of chords with diagrams and real audio demos. Filter by difficulty or musical genre.
+    <div
+      class="glass-card rounded-2xl p-8 transition-all duration-500 hover:scale-105 animate-fade-in-up delay-200 cursor-pointer"
+      (click)="handleFeatureClick('chords')">
+      <div class="interactive-icon text-4xl mb-4">🎼</div>
+      <h2 class="text-2xl font-bold text-slate-100 mb-4">Chord Library</h2>
+      <p class="text-slate-300 leading-relaxed">
+        Visual chord diagrams, real audio previews, and genre-wise filtering for all levels.
       </p>
+      <div class="mt-4 text-emerald-400 hover:text-emerald-300 transition-colors">Explore Chords →</div>
     </div>
 
-    <div class="bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-blur-md">
-      <h2 class="text-2xl font-bold mb-3">Bollywood Songs</h2>
-      <p>
-        Play your favorite Bollywood hits with simplified chords and lyrics. Perfect for campfires and performances.
+    <div
+      class="glass-card rounded-2xl p-8 transition-all duration-500 hover:scale-105 animate-fade-in-up delay-300 cursor-pointer"
+      (click)="handleFeatureClick('bollywood')">
+      <div class="interactive-icon text-4xl mb-4">🎶</div>
+      <h2 class="text-2xl font-bold text-slate-100 mb-4">Bollywood Songs</h2>
+      <p class="text-slate-300 leading-relaxed">
+        Play along with simplified versions of your favorite hits. Lyrics & chords included.
       </p>
+      <div class="mt-4 text-pink-400 hover:text-pink-300 transition-colors">Play Songs →</div>
     </div>
   </div>
 
-  <!-- Why Choose Us -->
-  <div class="mt-24 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold mb-4">Why Learn with EzChords?</h2>
-    <ul class="text-left list-disc list-inside text-lg space-y-2 px-4 md:px-10">
-      <li>🎸 Beginner to Pro – structured learning path for all levels</li>
-      <li>🎧 Listen & Learn – audio-enabled chord and song previews</li>
-      <li>📱 Learn Anywhere – fully responsive mobile-friendly design</li>
-      <li>🎵 Focus on Practice – curated warm-ups and daily routines</li>
-      <li>🌐 Completely Free – access without registration</li>
-    </ul>
+  <!-- 💡 Why EzChords -->
+  <div class="mt-24 max-w-4xl mx-auto animate-fade-in-up delay-500">
+    <h2 class="text-4xl font-bold mb-8 text-amber-300 animate-pulse-gentle">Why EzChords?</h2>
+    <div class="glass-card rounded-2xl p-8 text-left bg-opacity-80">
+      <ul class="text-lg space-y-4 text-slate-200">
+        <li
+          *ngFor="let item of features"
+          class="flex items-center space-x-3 hover:text-white transition-colors cursor-pointer"
+          (click)="animateListItem($event)">
+          <span class="interactive-icon text-xl">{{ item.icon }}</span>
+          <span>{{ item.text }}</span>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <!-- Call to Action -->
-  <div class="mt-16">
-    <h3 class="text-2xl font-semibold mb-2">Ready to rock your first song?</h3>
-    <a
-      routerLink="/bollywood-songs"
-      class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition"
-    >
-      Try a Bollywood Song Now →
-    </a>
+  <!-- 💬 Testimonials -->
+  <div class="mt-24 max-w-4xl mx-auto animate-fade-in-up delay-600">
+    <h2 class="text-3xl font-bold mb-8 text-pink-400">What Learners Say</h2>
+    <div class="grid md:grid-cols-2 gap-6 text-left">
+      <div
+        *ngFor="let t of testimonials"
+        class="glass-card p-6 rounded-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+        (click)="handleTestimonialClick($event)">
+        <div class="text-2xl mb-3">⭐⭐⭐⭐⭐</div>
+        <p class="text-slate-200 mb-4">"{{ t.message }}"</p>
+        <p class="italic text-sm text-slate-400">– {{ t.name }}, {{ t.role }}</p>
+      </div>
+    </div>
   </div>
 
-  <!-- Footer Message -->
-  <div class="mt-20 text-lg italic drop-shadow-lg">
-    <p>Start your guitar journey today. Discover the joy of making music. 🎶</p>
+  <!-- 🎯 Call to Action -->
+  <div class="mt-24 animate-fade-in-up delay-700">
+    <div class="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
+      <h3 class="text-2xl font-semibold mb-4 text-slate-100">
+        <span class="interactive-icon">🎤</span> Want to try a Bollywood song now?
+      </h3>
+      <button
+        class="glow-button bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 hover:from-pink-600 hover:via-red-600 hover:to-orange-600 text-white font-bold py-4 px-10 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105"
+        (click)="handleBollywoodSongs()">
+        Try a Song Now <span class="interactive-icon">→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 📜 Footer -->
+  <div class="mt-20 text-lg italic text-slate-300 drop-shadow-lg animate-fade-in-up delay-800">
+    <p>Start your musical journey today. Discover the joy of playing <span class="interactive-icon">🎸</span></p>
   </div>
 </section>
