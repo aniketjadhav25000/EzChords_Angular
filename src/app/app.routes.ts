@@ -5,6 +5,8 @@ import { ChordLibraryComponent } from './pages/chord-library/chord-library.compo
 import { BollywoodSongsComponent } from './pages/bollywood-songs/bollywood-songs.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { SongDetailComponent } from './pages/bollywood-songs/song-detail/song-detail.component'; // ⬅️ Add this import
+import { LearningPathComponent } from './pages/learning-path/learning-path.component';
+import { PhaseDetailComponent } from './pages/learning-path/phase-detail/phase-detail.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,5 +15,7 @@ export const routes: Routes = [
   { path: 'bollywood-songs', component: BollywoodSongsComponent },
   { path: 'bollywood-songs/:id', component: SongDetailComponent }, // ⬅️ New route for song details
   { path: 'contact', component: ContactComponent },
+    { path: 'learning-path', component: LearningPathComponent },
+     { path: 'learning/phase/:id', component: PhaseDetailComponent },
 ];
 

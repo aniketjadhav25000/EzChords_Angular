@@ -1,110 +1,319 @@
-<!-- Animated Stars Background -->
-<div id="stars" class="stars"></div>
 
-<!-- Main Section -->
-<section class="relative z-10 min-h-screen text-white text-center py-24 px-6 section-content">
+<div class="fixed top-0 left-0 w-full h-full z-0 bg-gradient-to-b from-indigo-950/30 to-gray-950/90"></div>
 
-  <!-- ⭐ Hero Section -->
-  <div class="mb-24 animate-fade-in-up">
-    <div class="animate-float">
-      <h1 class="text-6xl font-extrabold mb-4 leading-tight drop-shadow-2xl">
-        Welcome to <span class="text-amber-400 animate-pulse-gentle">EzChords</span>
-        <span class="interactive-icon inline-block text-pink-400">🎸</span>
-      </h1>
-    </div>
-    <p class="text-xl mb-8 text-slate-200 drop-shadow-lg max-w-2xl mx-auto animate-fade-in-up delay-200">
-      Your journey to playing guitar starts here! Beginner-friendly lessons, a rich chord library, and your favorite Bollywood songs — all in one place.
-    </p>
-    <button
-      class="glow-button bg-gradient-to-r from-violet-600 via-purple-600 to-blue-600 hover:from-violet-700 hover:via-purple-700 hover:to-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fade-in-up delay-400"
-      (click)="handleGetStarted()">
-      <span class="interactive-icon">🎯</span> Get Started Now
-    </button>
-  </div>
+<section class="bg-transparent z-10 min-h-screen text-white py-12 px-4 sm:px-6 lg:px-8">
 
-  <!-- 🌟 Features Section -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto text-left mt-10">
-    <div
-      class="glass-card rounded-2xl p-8 transition-all duration-500 hover:scale-105 animate-fade-in-up delay-100 cursor-pointer"
-      (click)="handleFeatureClick('lessons')">
-      <div class="interactive-icon text-4xl mb-4">🎓</div>
-      <h2 class="text-2xl font-bold text-slate-100 mb-4">Beginner Lessons</h2>
-      <p class="text-slate-300 leading-relaxed">
-        Step-by-step guidance with video tutorials to master chords, strumming, and rhythm.
-      </p>
-      <div class="mt-4 text-violet-400 hover:text-violet-300 transition-colors">Learn More →</div>
-    </div>
+  <div class="container mx-auto max-w-7xl relative overflow-visible">
+    <div class="flex flex-col md:flex-row items-center gap-14 md:gap-16 pt-10 pb-24 hero-animate">
+      <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left relative z-10">
+        <div class="mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+          <span class="hero-badge shadow-lg">
+            India's #1 Guitar Learning Platform
+          </span>
+        </div>
+        <h1 class="hero-title animate-fade-in-up" style="animation-delay: 0.2s;">
+          Master Guitar with <br>
+          <span class="text-white drop-shadow-lg">EzChords</span>
+        </h1>
+        <p class="hero-desc animate-fade-in-up" style="animation-delay: 0.3s;">
+          Transform from beginner to confident player with our interactive chord library, step-by-step video lessons, and curated Bollywood song book.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 w-full mb-7 animate-fade-in-up" style="animation-delay: 0.4s;">
+          <button
+            class="glow-button px-8 py-3 rounded-full text-lg font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-xl hover:shadow-indigo-500/50 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center w-full sm:w-auto"
+            (click)="handleGetStarted()" tabindex="0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19l.5-2M19 5l-2 .5M12 3v1M12 21v-1M21 12h-1M3 12h1M4.5 4.5L6 6M19.5 19.5L18 18M19.5 4.5L18 6M4.5 19.5L6 18" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9l-6 6m0-6l6 6" />
+            </svg>
+            Start Learning Free
+          </button>
+          <button
+            class="glow-button px-8 py-3 rounded-full text-lg font-semibold bg-transparent border border-white/30 text-white shadow-xl hover:shadow-white/20 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center w-full sm:w-auto"
+            (click)="handleExploreChords()" tabindex="0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 01-2-2m0 0V7m0 8a2 2 0 002 2m0 0a2 2 0 002-2" />
+            </svg>
+            Explore Chord Library
+          </button>
+        </div>
+        <div class="flex items-center space-x-2 text-gray-400 animate-fade-in-up" style="animation-delay: 0.5s;">
+          <div class="flex -space-x-2">
+            <img src="assets/avatars/1.jpg" class="w-10 h-10 rounded-full border-2 border-indigo-500/50 object-cover" alt="User" />
+            <img src="assets/avatars/2.jpg" class="w-10 h-10 rounded-full border-2 border-indigo-500/50 object-cover" alt="User" />
+            <img src="assets/avatars/3.jpg" class="w-10 h-10 rounded-full border-2 border-indigo-500/50 object-cover" alt="User" />
+          </div>
+          <span>Join <span class="font-bold text-white">5,000+</span> learners today</span>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center md:justify-end relative z-0 guitar-3d-container animate-fade-in-up" style="animation-delay: 0.6s;">
+        <div class="relative w-[300px] h-[300px] md:w-[420px] md:h-[420px] flex items-center justify-center">
+          <svg viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg"
+               class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full guitar-3d-element">
+            <ellipse cx="170" cy="210" rx="120" ry="60" fill="#1f2937" fill-opacity=".7"/>
+            <ellipse cx="170" cy="165" rx="90" ry="80" fill="#27264a" fill-opacity=".85"/>
+            <ellipse cx="170" cy="165" rx="67" ry="60" fill="#423d5c" fill-opacity="1"/>
+            <ellipse cx="170" cy="165" rx="20" ry="18" fill="#18181b"/>
+            <rect x="166" y="60" width="2.7" height="140" fill="#b4b7da"/>
+            <rect x="172" y="58" width="2.7" height="144" fill="#b4b7da"/>
+            <rect x="178" y="62" width="2.7" height="136" fill="#b4b7da"/>
+            <rect x="163" y="38" width="14" height="60" rx="5.5" fill="#18181b"/>
+            <rect x="163" y="38" width="14" height="8" rx="3" fill="#6d28d9"/>
+            <ellipse cx="170" cy="30" rx="18" ry="9" fill="#a78bfa"/>
+          </svg>
 
-    <div
-      class="glass-card rounded-2xl p-8 transition-all duration-500 hover:scale-105 animate-fade-in-up delay-200 cursor-pointer"
-      (click)="handleFeatureClick('chords')">
-      <div class="interactive-icon text-4xl mb-4">🎼</div>
-      <h2 class="text-2xl font-bold text-slate-100 mb-4">Chord Library</h2>
-      <p class="text-slate-300 leading-relaxed">
-        Visual chord diagrams, real audio previews, and genre-wise filtering for all levels.
-      </p>
-      <div class="mt-4 text-emerald-400 hover:text-emerald-300 transition-colors">Explore Chords →</div>
-    </div>
+          <img src="assets/pick.png" alt="Guitar Pick"
+               class="absolute left-[15%] top-[15%] w-20 pick-3d-element drop-shadow-xl" />
 
-    <div
-      class="glass-card rounded-2xl p-8 transition-all duration-500 hover:scale-105 animate-fade-in-up delay-300 cursor-pointer"
-      (click)="handleFeatureClick('bollywood')">
-      <div class="interactive-icon text-4xl mb-4">🎶</div>
-      <h2 class="text-2xl font-bold text-slate-100 mb-4">Bollywood Songs</h2>
-      <p class="text-slate-300 leading-relaxed">
-        Play along with simplified versions of your favorite hits. Lyrics & chords included.
-      </p>
-      <div class="mt-4 text-pink-400 hover:text-pink-300 transition-colors">Play Songs →</div>
-    </div>
-  </div>
-
-  <!-- 💡 Why EzChords -->
-  <div class="mt-24 max-w-4xl mx-auto animate-fade-in-up delay-500">
-    <h2 class="text-4xl font-bold mb-8 text-amber-300 animate-pulse-gentle">Why EzChords?</h2>
-    <div class="glass-card rounded-2xl p-8 text-left bg-opacity-80">
-      <ul class="text-lg space-y-4 text-slate-200">
-        <li
-          *ngFor="let item of features"
-          class="flex items-center space-x-3 hover:text-white transition-colors cursor-pointer"
-          (click)="animateListItem($event)">
-          <span class="interactive-icon text-xl">{{ item.icon }}</span>
-          <span>{{ item.text }}</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 💬 Testimonials -->
-  <div class="mt-24 max-w-4xl mx-auto animate-fade-in-up delay-600">
-    <h2 class="text-3xl font-bold mb-8 text-pink-400">What Learners Say</h2>
-    <div class="grid md:grid-cols-2 gap-6 text-left">
-      <div
-        *ngFor="let t of testimonials"
-        class="glass-card p-6 rounded-xl transition-all duration-300 hover:scale-105 cursor-pointer"
-        (click)="handleTestimonialClick($event)">
-        <div class="text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-        <p class="text-slate-200 mb-4">"{{ t.message }}"</p>
-        <p class="italic text-sm text-slate-400">– {{ t.name }}, {{ t.role }}</p>
+          <svg class="absolute top-[10%] right-[20%] w-10 h-10 note-3d-element" viewBox="0 0 24 24" fill="none">
+            <path d="M7 20a2 2 0 100-4 2 2 0 000 4zm10-4V6a1 1 0 00-1.447-.894l-8 4A1 1 0 007 10v6" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg class="absolute bottom-[15%] right-[18%] w-10 h-10 note-3d-element" viewBox="0 0 24 24" fill="none">
+            <path d="M9 20a2 2 0 100-4 2 2 0 000 4zm6-5V6a1 1 0 00-1.447-.894l-8 4A1 1 0 006 10v5" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg class="absolute top-[45%] left-[10%] w-9 h-9 note-3d-element" viewBox="0 0 24 24" fill="none">
+            <path d="M12 17V7a1 1 0 00-1.447-.894l-8 4A1 1 0 003 11v6" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- 🎯 Call to Action -->
-  <div class="mt-24 animate-fade-in-up delay-700">
-    <div class="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
-      <h3 class="text-2xl font-semibold mb-4 text-slate-100">
-        <span class="interactive-icon">🎤</span> Want to try a Bollywood song now?
-      </h3>
+  <section id="features-section" class="container mx-auto max-w-7xl px-4 mb-28 scroll-animate">
+    <h2 class="section-title text-center mb-14">
+      Everything You Need to Start Playing
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="feature-card feature-3d-card p-8 rounded-2xl cursor-pointer group flex flex-col items-start text-left"
+        (click)="handleFeatureClick('lessons')" tabindex="0">
+        <div class="bg-indigo-600/20 w-16 h-16 rounded-xl flex items-center justify-center mb-5 group-hover:bg-indigo-600/30 transition-colors shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">Structured Learning Path</h3>
+        <p class="text-gray-400 mb-5 flex-grow">
+          Progress from basic chords to full songs with our curriculum designed by pros.
+        </p>
+        <div class="mt-auto flex items-center text-indigo-300 group-hover:text-indigo-200 transition-colors" (click)="handleLearning()">
+          <span class="font-semibold">Start Learning</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="feature-card feature-3d-card p-8 rounded-2xl cursor-pointer group flex flex-col items-start text-left"
+        (click)="handleFeatureClick('chords')" tabindex="0">
+        <div class="bg-purple-600/20 w-16 h-16 rounded-xl flex items-center justify-center mb-5 group-hover:bg-purple-600/30 transition-colors shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">Interactive Chord Library</h3>
+        <p class="text-gray-400 mb-5 flex-grow">
+          Visual diagrams, finger positioning, and audio samples for 500+ chords.
+        </p>
+        <div class="mt-auto flex items-center text-purple-300 group-hover:text-purple-200 transition-colors">
+          <span class="font-semibold">Explore Chords</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="feature-card feature-3d-card p-8 rounded-2xl cursor-pointer group flex flex-col items-start text-left"
+        (click)="handleFeatureClick('bollywood')" tabindex="0">
+        <div class="bg-amber-600/20 w-16 h-16 rounded-xl flex items-center justify-center mb-5 group-hover:bg-amber-600/30 transition-colors shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15.536a5 5 0 001.414 1.414m2.828-9.9a9 9 0 012.728-2.728"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-white">Bollywood Song Collection</h3>
+        <p class="text-gray-400 mb-5 flex-grow">
+          Play along with simplified versions of Bollywood hits. Lyrics & chords included.
+        </p>
+        <div class="mt-auto flex items-center text-amber-300 group-hover:text-amber-200 transition-colors">
+          <span class="font-semibold">Browse Songs</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container mx-auto max-w-7xl px-4 mb-28 scroll-animate">
+    <div class="text-center mb-12">
+      <h2 class="section-title mb-4">
+        Popular Bollywood Songs
+      </h2>
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+        Start playing these crowd favorites with our simplified chord arrangements
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div *ngFor="let song of popularSongs" class="glass-card song-3d-card rounded-xl overflow-hidden cursor-pointer group"
+           (click)="handleSongSelect(song)" tabindex="0">
+        <div class="relative overflow-hidden">
+          <img [src]="song.image" alt="{{song.title}}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+            <div class="absolute top-3 right-3 bg-black/60 rounded-full p-2 group-hover:bg-pink-500 transition-colors shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-xl text-white mb-1">{{song.title}}</h3>
+          <p class="text-gray-400 text-sm">{{song.artist}}</p>
+          <div class="mt-3 flex items-center text-sm text-amber-400">
+            <span class="mr-2">Difficulty: </span>
+            <div class="flex">
+              <svg *ngFor="let i of [1,2,3,4,5]" [attr.class]="i <= song.difficulty ? 'text-amber-400' : 'text-gray-600'" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <polygon points="12,2 15,8.6 22,9.3 17,14 18.3,21 12,17.8 5.7,21 7,14 2,9.3 9,8.6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-10">
       <button
-        class="glow-button bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 hover:from-pink-600 hover:via-red-600 hover:to-orange-600 text-white font-bold py-4 px-10 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105"
-        (click)="handleBollywoodSongs()">
-        Try a Song Now <span class="interactive-icon">→</span>
+        class="glow-button px-10 py-3 rounded-full text-lg font-semibold bg-gradient-to-r from-pink-600 to-rose-600 text-white shadow-xl hover:shadow-pink-500/50 transition-all duration-300 transform hover:-translate-y-1 inline-flex items-center"
+        (click)="handleBollywoodSongs()" tabindex="0">
+        View All Songs
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
       </button>
     </div>
-  </div>
+  </section>
 
-  <!-- 📜 Footer -->
-  <div class="mt-20 text-lg italic text-slate-300 drop-shadow-lg animate-fade-in-up delay-800">
-    <p>Start your musical journey today. Discover the joy of playing <span class="interactive-icon">🎸</span></p>
-  </div>
+  <section class="container mx-auto max-w-7xl px-4 mb-28 scroll-animate">
+    <div class="bg-section rounded-3xl p-8 md:p-12 shadow-2xl">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="section-title text-left mb-6">
+            Why Choose EzChords?
+          </h2>
+          <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+            Our platform is crafted for Indian learners to play Bollywood songs while mastering fundamental guitar skills.
+          </p>
+          <ul class="space-y-4">
+            <li *ngFor="let item of features; let idx = index"
+                class="flex items-start cursor-pointer group"
+                tabindex="0"
+                (click)="animateListItem($event)"
+                (keydown.enter)="animateListItem($event)"
+                [attr.aria-label]="item.text">
+              <div class="flex-shrink-0 mt-1">
+                <div class="h-7 w-7 rounded-full bg-blue-500/20 flex items-center justify-center shadow-md group-hover:bg-blue-500/30 transition-colors interactive-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="ml-3 text-gray-200 text-lg group-hover:text-white transition-colors">{{item.text}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="relative">
+          <div class="relative aspect-video rounded-xl overflow-hidden border-2 border-white/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-out">
+            <img src="assets/app-screenshot.jpg" alt="EzChords App Preview" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+              <div>
+                <div class="text-2xl font-bold mb-2 text-white">Try our interactive chord trainer</div>
+                <button class="bg-white/90 hover:bg-white text-gray-900 hover:text-blue-700 font-medium py-2.5 px-6 rounded-full text-base transition-colors shadow-lg"
+                  (click)="handleExploreChords()">
+                  Launch Chord Trainer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container mx-auto max-w-7xl px-4 mb-28 scroll-animate">
+    <div class="text-center mb-14">
+      <h2 class="section-title mb-4">
+        Success Stories
+      </h2>
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+        Join thousands of learners who transformed their guitar skills with EzChords
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div *ngFor="let t of testimonials"
+           class="testimonial-card testimonial-3d-card p-6 rounded-xl cursor-pointer flex flex-col"
+           (click)="handleTestimonialClick($event)"
+           tabindex="0"
+           (keydown.enter)="handleTestimonialClick($event)">
+        <div class="flex items-center mb-4">
+          <img [src]="t.avatar" class="w-14 h-14 rounded-full border-2 border-indigo-500/50 object-cover mr-4 shadow-md">
+          <div>
+            <h4 class="font-bold text-xl text-white">{{t.name}}</h4>
+            <p class="text-sm text-gray-400">{{t.role}}</p>
+          </div>
+        </div>
+        <div class="mb-3 flex">
+          <svg *ngFor="let i of [1,2,3,4,5]" class="h-4 w-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+            <polygon points="12,2 15,8.6 22,9.3 17,14 18.3,21 12,17.8 5.7,21 7,14 2,9.3 9,8.6"/>
+          </svg>
+        </div>
+        <p class="text-gray-300 italic flex-grow">"{{t.message}}"</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container mx-auto max-w-4xl px-4 mb-20 scroll-animate">
+    <div class="bg-gradient-to-br from-indigo-900/60 to-blue-900/60 rounded-3xl p-8 md:p-12 text-center border border-indigo-500/30 shadow-2xl">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-white leading-tight">
+        Ready to Start Your Guitar Journey?
+      </h2>
+      <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+        Join EzChords today and get instant access to all our lessons, chords, and songs.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button
+          class="glow-button px-10 py-4 rounded-full text-xl font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-xl hover:shadow-indigo-500/50 transition-all duration-300 transform hover:-translate-y-1"
+          (click)="handleGetStarted()" tabindex="0">
+          Start Learning Free
+        </button>
+        <button
+          class="glow-button px-10 py-4 rounded-full text-xl font-semibold bg-transparent border border-white/30 text-white shadow-xl hover:shadow-white/20 transition-all duration-300 transform hover:-translate-y-1"
+          (click)="handleExploreFeatures()" tabindex="0">
+          Explore Features
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="container mx-auto max-w-7xl px-4 py-12 border-t border-gray-800">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-6 md:mb-0">
+        <div class="text-3xl font-extrabold flex items-center">
+          <span class="text-indigo-400 mr-2">Ez</span><span class="text-white">Chords</span>
+        </div>
+        <p class="text-base text-gray-500 mt-2">Your gateway to guitar mastery</p>
+      </div>
+      <div class="flex space-x-6">
+        <a href="#" class="text-gray-500 hover:text-white transition-colors text-2xl" aria-label="Facebook">
+          <i class="fab fa-facebook"></i> </a>
+        <a href="#" class="text-gray-500 hover:text-white transition-colors text-2xl" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-white transition-colors text-2xl" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-600">
+      <p>© 2023 EzChords. All rights reserved.</p>
+    </div>
+  </footer>
 </section>

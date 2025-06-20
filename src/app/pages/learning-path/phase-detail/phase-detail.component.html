@@ -1,0 +1,33 @@
+<div class="min-h-screen bg-gray-900 text-white p-6">
+  <h1 class="text-3xl font-bold mb-4">Phase {{ phaseId }} Details</h1>
+  
+  <div *ngIf="phaseId === '1'" class="space-y-4">
+    <h2 class="text-xl font-semibold">🎯 Foundations</h2>
+    <ul class="list-disc list-inside text-gray-300">
+      <li>Learn basic chords: C, G, D, Em</li>
+      <li>Finger positioning techniques</li>
+      <li>Simple strumming patterns</li>
+      <li>Guitar tuning and posture</li>
+    </ul>
+  </div>
+
+  <div *ngIf="phaseId === '2'" class="space-y-4">
+    <h2 class="text-xl font-semibold">🎶 Song Fundamentals</h2>
+    <ul class="list-disc list-inside text-gray-300">
+      <li>Chord switching & transitions</li>
+      <li>Basic fingerpicking</li>
+      <li>Easy Bollywood songs</li>
+      <li>Rhythm and strumming patterns</li>
+    </ul>
+  </div>
+
+  <div *ngIf="phaseId === '3'" class="space-y-4">
+    <h2 class="text-xl font-semibold">🎤 Performance Ready</h2>
+    <ul class="list-disc list-inside text-gray-300">
+      <li>Barre chords mastery</li>
+      <li>Advanced strumming techniques</li>
+      <li>Full song performance prep</li>
+      <li>Stage confidence & practice</li>
+    </ul>
+  </div>
+</div>

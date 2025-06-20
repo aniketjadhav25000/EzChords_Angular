@@ -1,8 +1,10 @@
+import { RouterModule } from '@angular/router';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router'; // ✅ Add this
+
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -13,16 +15,18 @@ import { BollywoodSongsComponent } from './pages/bollywood-songs/bollywood-songs
 import { SongDetailComponent } from './pages/bollywood-songs/song-detail/song-detail.component'; // ✅
 
 import { routes } from './app.routes'; // ✅ Your defined routes
+import { LearningPathComponent } from './pages/learning-path/learning-path.component';
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     ContactComponent,
     HomeComponent,
     BeginnerLessonsComponent,
     ChordLibraryComponent,
     BollywoodSongsComponent,
-    SongDetailComponent
+    SongDetailComponent,
+    LearningPathComponent // ✅ Add LearningPathComponent
   ],
   imports: [
     BrowserModule,

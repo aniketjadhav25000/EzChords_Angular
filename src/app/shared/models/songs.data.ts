@@ -5,18 +5,13 @@ export const BOLLYWOOD_SONGS: Song[] = [
     id: 'tum-hi-ho',
     title: 'Tum Hi Ho',
     movie: 'Aashiqui 2',
+    artist: 'Arijit Singh',
     chords: 'Em – Am – D – C',
     capo: '1st fret',
     strumming: 'D D UUU DUDU',
     tips: '💡 Emotional ballad. Practice slow transitions.',
     imageUrl: 'https://i.ytimg.com/vi/Umqb9KENgmk/maxresdefault.jpg',
     lyrics: `
-
-
-
-
-
-    
 (Em) Hum tere bin 
 Ab (Am) reh nahi sakte
 (D) Tere bina kya (Bm) wajood (C) mera
@@ -80,12 +75,14 @@ Ab (Am) tum hi ho
 (Em) Chain bhi
 Mera (Am) dard bhi
 Meri (D) aashiqui ab (Bm) tum hi (C) ho
-    `
+    `,
+    youtubeId: 'Umqb9KENgmk' // Placeholder: Replace with actual YouTube ID for 'Tum Hi Ho'
   },
   {
     id: 'channa-mereya',
     title: 'Channa Mereya',
     movie: 'Ae Dil Hai Mushkil',
+    artist: 'Arijit Singh', // Assuming Arijit Singh based on song, confirm if needed
     chords: 'Am – F – Dm – C',
     capo: 'No capo',
     strumming: 'D UDUD UDU DDU',
@@ -153,7 +150,7 @@ Channa (Am) mereya mereya
 Channa (F) mereya mereya
 Channa (Dm) mereya mereya (C) beliya
 O (G) piya (Am) (F) (Dm) (C)
-         
+          
  
 [Verse]
 Tere (Am) rukh se apna (F) raasta (Dm)
@@ -173,12 +170,14 @@ Channa (F) mereya mereya
 Channa (Dm) mereya mereya (C) beliya
 O (G) piya (Am) (F) (Dm) (C)
 
-    `
+    `,
+    youtubeId: '284Ov7ysmfA' // Placeholder: Replace with actual YouTube ID for 'Channa Mereya'
   },
   {
     id: 'hale-dil',
     title: 'Hale Dil',
     movie: 'Murder 2',
+    artist: 'Harshit Saxena', // Assuming Harshit Saxena, confirm if needed
     chords: 'Am – G – F',
     capo: '1st fret / Without capo',
     strumming: 'D D U UDU',
@@ -244,12 +243,14 @@ Ya(F)ad karke muskuraata ha(Em)an
  
 Woho (Am)ho…hohohoho (G)ho..hohohohoho
 (F)ho..hohohoho(Em) (x2 times)
-    `
+    `,
+    youtubeId: 'uSibwB2TQC4' // Placeholder: Replace with actual YouTube ID for 'Hale Dil'
   },
   {
     id: 'jeene-laga-hoon',
     title: 'Jeene Laga Hoon',
     movie: 'Ramaiya Vastavaiya',
+    artist: 'Atif Aslam, Shreya Ghoshal', // Assuming artists, confirm if needed
     chords: 'Em – D – C – G',
     capo: '3rd fret',
     strumming: 'DD UUD DDU',
@@ -312,11 +313,13 @@ Dil (D) theharne (G) laga
 (C) Pehle se zyaada
 (G) Pehle se zyaada
 Ishq (D) aane (G) laga
-    `
+    `,
+    youtubeId: 'pkzOBl1p7y4' // Placeholder: Replace with actual YouTube ID for 'Jeene Laga Hoon'
   },
   {
     id: 'mann-mera',
     title: 'Mann Mera',
+    movie: 'Table No.21',
     artist: 'Gajendra Verma',
     chords: 'Am – G – F',
     capo: '2nd fret / 4th fret',
@@ -385,6 +388,7 @@ Kuch (F) jaane agar to itna
 Ke ye (G) tera deewana hai
 Re Mann (Am) mera (G)
 Maane naa, Mann (F) mera (G)
-    `
+    `,
+    youtubeId: 'SlHnlxDt2TQ' // Placeholder: Replace with actual YouTube ID for 'Mann Mera'
   }
 ];

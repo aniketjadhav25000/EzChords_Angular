@@ -1,60 +1,78 @@
-<nav class="fixed top-0 left-0 w-full z-50 border-b border-white/20 bg-transparent backdrop-blur-sm text-white transition-colors duration-500">
+<nav class="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-gradient-to-b from-black/40 via-black/20 to-transparent backdrop-blur-xl text-white transition-all duration-500 shadow-xl">
   <div class="flex flex-wrap items-center justify-between h-20 px-4 sm:px-6 lg:px-8 w-full">
-    
-    <!-- Logo Left -->
+
     <div class="flex items-center flex-shrink-0">
-      <a routerLink="/" class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 tracking-wider select-none">
+      <a routerLink="/" class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 tracking-wider select-none hover:scale-105 transition-transform duration-300 ease-in-out">
         EzChords
       </a>
     </div>
 
-    <!-- Desktop Nav Center -->
-    <div class="hidden md:flex flex-grow justify-center space-x-6 xl:space-x-10">
+    <div class="hidden md:flex flex-grow justify-center space-x-8 xl:space-x-12">
       <ng-container *ngFor="let link of navLinks">
         <a
           [routerLink]="link.path"
-          routerLinkActive="text-indigo-300"
+          routerLinkActive="text-pink-300 scale-105"
           [routerLinkActiveOptions]="{ exact: true }"
-          class="text-lg font-medium tracking-wide relative group transition duration-300"
+          class="text-lg font-medium tracking-wide relative group transition duration-300 ease-in-out transform hover:scale-105"
         >
-          <span class="inline-block group-hover:underline group-hover:decoration-indigo-400 group-hover:underline-offset-8 group-hover:scale-105 transition-all duration-300">
+          <span class="inline-block relative">
             {{ link.label }}
+            <span class="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-purple-400 to-pink-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
           </span>
         </a>
       </ng-container>
     </div>
 
-    <!-- Search Bar Right (only for md and above) -->
-    <div class="hidden md:flex items-center space-x-2 ml-4">
-      <input
-        type="text"
-        [(ngModel)]="searchInput"
-        placeholder="Search chords..."
-        class="px-3 py-2 rounded-md bg-white bg-opacity-20 backdrop-blur-sm border border-white/30 placeholder-white/70 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-opacity-40 transition"
-        (keyup.enter)="onSearch()"
-      />
-      <button (click)="onSearch()" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 rounded-md font-semibold transition">
-        Search
-      </button>
+    <div class="hidden md:flex items-center space-x-3 ml-4 relative">
+      <ng-container *ngIf="!isLoggedIn; else userMenu">
+        <button routerLink="/login" class="px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full font-semibold shadow-lg hover:shadow-blue-500/40 transition duration-300 transform hover:scale-105">
+          Login
+        </button>
+        <button routerLink="/signup" class="px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-full font-semibold shadow-lg hover:shadow-purple-500/40 transition duration-300 transform hover:scale-105">
+          Sign Up
+        </button>
+      </ng-container>
+
+      <ng-template #userMenu>
+        <div class="relative">
+          <button (click)="toggleUserMenu()" class="flex items-center space-x-2 p-2 rounded-full hover:bg-white/10 transition duration-300 focus:outline-none">
+            <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-white/50">
+            <span class="font-medium text-lg">{{ userName }}</span>
+            <svg class="w-4 h-4 transition-transform duration-300" [class.rotate-180]="isUserMenuOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+
+          <div
+            [ngClass]="{
+              'scale-y-100 opacity-100': isUserMenuOpen,
+              'scale-y-0 opacity-0': !isUserMenuOpen
+            }"
+            class="absolute right-0 mt-2 w-48 bg-gradient-to-br from-gray-800 to-gray-900 rounded-md shadow-lg py-2 transition-all duration-300 origin-top z-10"
+          >
+            <a routerLink="/profile" (click)="closeUserMenu()" class="block px-4 py-2 text-sm text-white hover:bg-gray-700 transition duration-200">My Profile</a>
+            <a routerLink="/saved-chords" (click)="closeUserMenu()" class="block px-4 py-2 text-sm text-white hover:bg-gray-700 transition duration-200">Saved Chords</a>
+            <a routerLink="/settings" (click)="closeUserMenu()" class="block px-4 py-2 text-sm text-white hover:bg-gray-700 transition duration-200">Settings</a>
+            <div class="border-t border-gray-700 my-1"></div>
+            <button (click)="logout()" class="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-gray-700 transition duration-200">Logout</button>
+          </div>
+        </div>
+      </ng-template>
     </div>
 
-    <!-- Mobile Menu Toggle Button -->
     <div class="md:hidden flex items-center ml-auto">
-      <button (click)="toggleMenu()" class="text-white focus:outline-none">
-        <svg *ngIf="!isOpen" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <button (click)="toggleMenu()" class="text-white focus:outline-none p-2 rounded-md hover:bg-white/10 transition duration-300">
+        <svg *ngIf="!isOpen" class="w-8 h-8 transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <svg *ngIf="isOpen" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <svg *ngIf="isOpen" class="w-8 h-8 transition-transform duration-300 ease-in-out rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Dropdown Menu -->
   <div
     [ngClass]="{
-      'max-h-screen opacity-100 py-4 px-6 bg-[#1e1b4b]/90': isOpen,
+      'max-h-screen opacity-100 py-4 px-6 bg-[#1e1b4b]/90 border-t border-white/10': isOpen,
       'max-h-0 opacity-0 overflow-hidden': !isOpen
     }"
     class="md:hidden flex flex-col space-y-4 transition-all duration-500 ease-in-out"
@@ -63,10 +81,26 @@
       <a
         [routerLink]="link.path"
         (click)="closeMenu()"
-        class="text-lg font-medium tracking-wide hover:underline decoration-indigo-400 underline-offset-8 transition"
+        class="text-lg font-medium tracking-wide text-white hover:text-pink-300 transition duration-300 ease-in-out transform hover:translate-x-2"
       >
         {{ link.label }}
       </a>
     </ng-container>
+
+    <ng-container *ngIf="!isLoggedIn; else mobileUserMenu">
+      <a routerLink="/login" (click)="closeMenu()" class="text-lg font-medium tracking-wide text-white hover:text-blue-300 transition duration-300 ease-in-out transform hover:translate-x-2">
+        Login
+      </a>
+      <a routerLink="/signup" (click)="closeMenu()" class="text-lg font-medium tracking-wide text-white hover:text-pink-300 transition duration-300 ease-in-out transform hover:translate-x-2">
+        Sign Up
+      </a>
+    </ng-container>
+
+    <ng-template #mobileUserMenu>
+      <a routerLink="/profile" (click)="closeMenu()" class="text-lg font-medium tracking-wide text-white hover:text-pink-300 transition duration-300 ease-in-out transform hover:translate-x-2">My Profile</a>
+      <a routerLink="/saved-chords" (click)="closeMenu()" class="text-lg font-medium tracking-wide text-white hover:text-pink-300 transition duration-300 ease-in-out transform hover:translate-x-2">Saved Chords</a>
+      <a routerLink="/settings" (click)="closeMenu()" class="text-lg font-medium tracking-wide text-white hover:text-pink-300 transition duration-300 ease-in-out transform hover:translate-x-2">Settings</a>
+      <button (click)="logout(); closeMenu()" class="block w-full text-left text-lg font-medium tracking-wide text-red-400 hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-2">Logout</button>
+    </ng-template>
   </div>
 </nav>
